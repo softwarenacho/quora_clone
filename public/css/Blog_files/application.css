@@ -1,0 +1,120 @@
+html {
+  height:100%;
+}
+
+body {
+  background-image: url("background.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat; 
+}
+
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px solid black;
+  background-color: #D8BEDB;
+}
+
+a{
+  text-decoration: none;
+  color: #EF313B;
+}
+
+h1 a, h1 {
+  color: #5A276C;
+  text-align: center;
+}
+
+h2 a, h2 {
+  text-align: center;
+  color: #5A276C;
+}
+
+h3 a, h3 {
+  margin-right: 10px;
+  color: #5A276C;
+}
+
+h4 a, h4 {
+  margin: 0 10px;
+  color: #EE495A;
+}
+
+h5 a, h5 {
+  margin: 5px;
+  margin-left: 30px;
+  color: #EE495A;
+}
+
+.answer {
+  font-size: 18px;
+  color: #8B479C;
+  margin-left: 30px;
+}
+
+textarea, input[type] {
+  font-size: 18px;
+  background-color: whitesmoke;
+}
+
+input[type="submit"], .button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0px 5px 5px 0px;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+  color: #5A276C;
+  text-decoration: none;  
+  background-color: #EF313B;
+}
+
+label {
+  font-size: 20px;
+  color: #5A276C;
+  margin-right: 5px;
+}
+
+.score {
+  display: inline-block;
+  color: #5A276C;
+  font-size: 75%;
+  font-weight: bolder;
+}
+
+.clear {
+  clear: both;
+}
+
+.profile_left {
+  float: left;
+  width: 45%;
+  padding-left: 30px;
+}
+
+.profile_right {
+  float: right;
+  width: 45%;
+  padding-left: 20px;
+}
+
+.align_right {
+  text-align: right;
+  margin-right: 45px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.inline {
+  display: inline-block;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+  <h1><%= @question.title %>
+  <p class="score">
+    Score: <%= question_score(@question.id) %>
+  </p>
+  </h1>
+
+  <h3><%= @question.content %>
+    <a class="vote" href="/question_vote/<%= session[:id] %>&<%= @question.id %>&1">
+      Up
+    </a>
+    <a class="vote" href="/question_vote/<%= session[:id]  %>&<%= @question.id %>&-1">
+      Down
+    </a>
+  </h3>
+  <% author = User.find(@question.user_id) %>
+  <h4>Author: <a href="/profile/<%= author.id %>"><%= author.name %></a></h4>
+  <h4>Posted: <%= @question.created_at %></h4>
+  
+
+  <br>
+  <h3>Answers:</h3>
+  <div class="answer">
+    <%if @answers_array != nil%>
+      <% @answers_array.each do |a| %>
+        <h3 class="inline answer"><%= a.answer %>
+          <p class="score">
+            Score: <%= answer_score(a.id) %>
+          </p>
+        </h3>
+
+        <a class="vote" href="/answer_vote/<%= session[:id] %>&<%= a.id %>&1">
+          Up
+        </a>
+        <a class="vote" href="/answer_vote/<%= session[:id]  %>&<%= a.id %>&-1">
+          Down
+        </a>
+        <% if a.user_id == @user.id %>
+          <a href="/delete/<%= a.id %>" class="vote">Delete</a>
+        <% end %>
+
+        <% author = User.find(a.user_id) %>
+        <h5 class="inline">Author: <a href="/profile/<%= author.id %>"><%= author.name %></a></h5>
+        <h5 class="inline">Posted: <%= a.created_at %></h5>  
+        <br><br>
+      <%end%>
+    <%end%>
+  </div>
+
+  <br><br>
+  <form id="answer_form" action="/answer_new" method="post">
+    <label for="answer">Answer:</label>
+    <textarea form="answer_form" name="answer" rows="3" cols="50" required></textarea>
+    <input type="hidden" name="question_id" value="<%= @question.id %>">
+    <br><br>
+    <div class="align_right">
+      <input type="submit" value="Post Answer">
+    </div>  
+  </form>
+
+  <br><br>
+  <a class="button" href="/feed">Home</a>
+  <% if @question.user_id == @user.id %>
+    <a class="button" href="/edit_question/<%= @question.id %>">Edit</a>
+    <a class="button" href="/delete_question/<%= @question.id %>">Delete</a>
+  <% end %>
+  <a class="button" href="/logout">Log out.</a>

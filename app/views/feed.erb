@@ -1,0 +1,31 @@
+<h2> Welcome, <a href="/profile/<%= @user.id %>"> <%= @user.name %></a>!</h2>
+<a class="button" href="/create_question">Post Question</a>
+<br>
+
+<div class="align_left">
+
+  <%if @questions_array == nil%>
+    <h2>No questions yet.</h2>
+  <%else%>
+
+    <% @questions_array.reverse_each do |q| %>
+
+      <h3 class="inline"><a href="/show/<%=q.id%>"><%= q.title %></a></h3>
+      <p class="score">
+        Score: <%= question_score(q.id) %>
+      </p>
+      <% author = User.find(q.user_id) %>
+      <h4 class="inline">Author: <a href="/profile/<%= author.id %>"><%= author.name %></a></h4>
+      <br><br>
+    <%end%>
+
+  <%end%>
+
+
+
+</div>
+
+
+<br>
+<a class="button" href="/users_list">Users list</a>
+<a class="button" href="/logout">Log out.</a>

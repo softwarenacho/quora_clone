@@ -1,0 +1,13 @@
+<h2>Edit your question!</h2>
+
+<div class="centered">
+  <form id = "question_form" action = "/update_question/<%= @question.id %>" method = "post">
+    <label for = "title">Title:</label>
+    <input type = "text" name = "title" id = "title" placeholder = "Introduce your title" class = "input" value="<%= @question.title %>" required>
+    <br><br>
+    <label for = "title">Question:</label>
+    <textarea form="question_form" name="content" id="content" rows="6" cols="50"><%= @question.content %></textarea class = "input">
+    <br><br>
+    <input type = "submit" value = "Update!">
+  </form>
+</div>

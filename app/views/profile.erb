@@ -1,0 +1,63 @@
+<h1>User: <%= @user.name %></h1>
+
+<% if @user.id == session[:id] %>
+  <br>
+  <a class="button" href="/edit">Edit user</a>
+<% end %>
+<a class="button" href="/create_question">Post Question</a>
+<br>
+<br>
+
+<div class="clear"></div>
+
+<div class="profile_left">
+  <h2 style="text-align: left;">User's questions</h2>
+  <%if @questions_array == nil%>
+    <h2>No questions yet.</h2>
+  <%else%>
+    <% @questions_array.reverse_each do |q| %>
+      <h3><a href="/show/<%=q.id%>"><%= q.title %></a>
+        <p class="score">
+          Score: <%= question_score(q.id) %>
+        </p>
+      </h3>
+      <h4><%= q.content %></h4>
+    <%end%>
+
+  <%end%>
+</div>
+
+<div class="profile_right">
+  <h2 style="text-align: left;">User's answers</h2>
+  <%if @answered_questions == nil%>
+    <h2>No answers yet.</h2>
+  <%else%>
+    <% @answered_questions.reverse_each do |a| %>
+      <h3><a href="/show/<%=a.id%>"><%= a.title %></a>
+        <p class="score">
+          Score: <%= question_score(a.id) %>
+        </p>
+      </h3>
+      <% author = User.find(a.user_id) %>
+      <h5>Author: <a href="/profile/<%= author.id %>"><%= author.name %></a></h5>
+      <br>
+      <h4>Answers:</h4>
+      <% answers_this_question = Answer.where(user_id: @user.id, question_id: a.id) %>
+      <% answers_this_question.each do |aq| %>
+        <h5><%= aq.answer %>
+          <p class="score">
+            Score: <%= answer_score(aq.id) %>
+          </p>
+        </h5>
+      <% end %>
+      <br>
+    <%end%>
+
+  <%end%>
+</div>
+
+<div class="clear"></div>
+
+<br><br>
+<a class="button" href="/feed">Home</a>
+<a class="button" href="/logout">Log out.</a>

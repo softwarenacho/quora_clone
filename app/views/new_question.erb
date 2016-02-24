@@ -1,0 +1,17 @@
+<h2>Post your question!</h2>
+
+<div class="centered">
+  <form id = "question_form" action = "/save_question" method = "post">
+    <label for = "title">Question:</label>
+    <input type = "text" id = "title" name = "title" placeholder = "Introduce your title" class = "input" required>
+    <br><br>
+    <label for = "content">Description:</label>
+    <textarea form="question_form" id="content" name="content" rows="6" cols="50"></textarea class = "input" required>
+    <br><br>
+    <input type = "submit" value = "Post!">
+  </form>
+</div>
+
+<br>
+
+<div id = "result"></div>
